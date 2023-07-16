@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissors</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Rock, Paper, Scissors</h1>
+    <div class="content">
+        <button class="play-button">Rock</button>
+        <button class="play-button">Paper</button>
+        <button class="play-button">Scissors</button>
+    </div>
+    <div class="results">
+        <div class="scoreboard">
+            <p class="player-score">Player Score: 0</p>
+            <p class="computer-score">Computer Score: 0</p>
+        </div>
+        <div class="result">
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script>
+        function getComputerChoice() {
+            const computerChoice = Math.floor(Math.random() * 3)
+
+            switch(computerChoice) {
+                case 0:
+                return 'Rock'
+                case 1:
+                return 'Paper'
+                default:
+                return 'Scissors'
+            }
+        }
+
+        function playRound(e){
+            const computerSelection = getComputerChoice()
+            const playerSelection = e.target.textContent;
+            
+            const playerScore = document.querySelector('.player-score')
+            const computerScore = document.querySelector('.computer-score')
+            const result = document.querySelector('.result')
+
+            if (computerSelection === playerSelection) {
+                result.textContent = `Tie!, ${computerSelection} ties ${playerSelection}`
+                return;
+            }
+
+            if (computerSelection === 'Scissors')
+            {
+                const playerWin = (playerSelection ==='Rock')
+                if (playerWin){
+                    result.textContent = "You Win! Rock beats Scissors"
+                    playerScore.textContent = playerScore.textContent.substring(0, 14) + (+playerScore.textContent.substring(14)+1)
+                }
+                else{
+                    result.textContent = 'You Lose! Scissors beats Paper'
+                    computerScore.textContent = computerScore.textContent.substring(0, 15) + (+computerScore.textContent.substring(15)+1)
+                }
+            }
+
+            if (computerSelection === 'Rock')
+            {
+                const playerWin = (playerSelection ==='Paper')
+                if (playerWin){
+                    result.textContent = 'You Win! Paper beats Rock'
+                    playerScore.textContent = playerScore.textContent.substring(0, 14) + (+playerScore.textContent.substring(14)+1)
+                }
+                else{
+                    result.textContent = 'You Lose! Rock beats Scissors'
+                    computerScore.textContent = computerScore.textContent.substring(0, 15) + (+computerScore.textContent.substring(15)+1)
+                }
+            }
+
+            if (computerSelection === 'Paper')
+            {
+                const playerWin = (playerSelection ==='Scissors')
+
+                if (playerWin){
+                    result.textContent = 'You Win! Scissors beats Paper'
+                    playerScore.textContent = playerScore.textContent.substring(0, 14) + (+playerScore.textContent.substring(14)+1)
+                }
+                else{
+                    result.textContent = 'You Lose! Paper beats Rock'
+                    computerScore.textContent = computerScore.textContent.substring(0, 15) + (+computerScore.textContent.substring(15)+1)
+                }
+            }
+        }
+
+        const buttons = document.querySelectorAll('.play-button')
+
+        buttons.forEach(button => {
+            button.addEventListener('click', playRound)
+        })
+    </script>
+</body>
+</html>

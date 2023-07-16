@@ -1,0 +1,41 @@
+body {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+button {
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 4px 4px 2px 1px rgba(255, 0, 0, 0.166);
+    transition: .2s;
+    background-color: rgba(108, 183, 213, 0.413);
+    border-width: 2px;
+}
+
+button:hover{
+    padding: 10px 20px 10px 20px;
+    opacity: 70%;
+}
+
+.content
+{
+    display: flex;
+    gap: 16px;
+}
+
+.results{
+    display: flex;
+    flex-direction: column;
+}
+
+.scoreboard {
+    display: flex;
+    gap: 50px;
+}
+
+div{
+    text-align: center;
+}
